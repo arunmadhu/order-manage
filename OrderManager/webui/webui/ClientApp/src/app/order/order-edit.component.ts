@@ -13,8 +13,11 @@ export class OrderEditComponent {
   id: number;
   private selOrder: Orders;
   private allAddress: OrderAddress[];
+  public flashMessage: string;
 
   constructor(private http: HttpClient, private route: ActivatedRoute, @Inject('BASE_URL') baseUrl: string) {
+
+    this.flashMessage = "";
 
     this.route.params.subscribe(params => {
       this.id = +params['orderid'];
@@ -43,16 +46,16 @@ export class OrderEditComponent {
       orderId : this.id
     };
 
+    this.flashMessage = "Updating order.....";
+
     this.http.post('http://localhost:57386/api/order/saveorderaddress', model).subscribe(
       result => {
       },
       error => {
-        //this.loading = false;
-        //this.flashMessage.show('We were not able to handle your request. Please try later.', { cssClass: 'alert-danger', timeout: 5000 });
+        this.flashMessage = "We were not able to handle your request. Please try later.";
       },
       () => {
-        //this.loading = false;
-        //this.flashMessage.show('Data updated successfully...', { cssClass: 'alert-success', timeout: 5000 });
+        this.flashMessage = "Data updated successfully...";
       }
     );
   }

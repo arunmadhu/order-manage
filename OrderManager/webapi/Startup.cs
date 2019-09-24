@@ -69,6 +69,7 @@ namespace webapi
             {
                 lb.AddConfiguration(Configuration.GetSection("Logging"));
                 lb.AddConsole();
+                lb.AddEventSourceLogger();
             });
         }
 
@@ -81,6 +82,7 @@ namespace webapi
             }
 
             app.UseCors("AllowUIOrigin");
+
 
             app.UseExceptionHandler(builder =>
             {

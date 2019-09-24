@@ -34,6 +34,10 @@
     </div>
     <div class="col-md-4">
       <button class="btn btn-md btn-primary" (click)="saveChange()">Save changes</button>
+      <br />
+      <div *ngIf="flashMessage">
+        <span class="alert alert-info">{{flashMessage}}</span>
+      </div>
     </div>
   </div>
   <br />

@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webui", "webui\webui.csproj", "{EAD8E1E3-9A62-43FA-96F3-16E784E8BC54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webui", "webui\webui.csproj", "{EAD8E1E3-9A62-43FA-96F3-16E784E8BC54}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ordermanagerdb", "..\ordermanagerdb\ordermanagerdb.sqlproj", "{6F33B84F-1265-4B09-A80D-86392F052337}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi", "..\webapi\webapi.csproj", "{51B373CE-F4FA-4F65-9DF0-9E0FB4D369E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi", "..\webapi\webapi.csproj", "{51B373CE-F4FA-4F65-9DF0-9E0FB4D369E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "order.commandservices", "..\order.commandservices\order.commandservices.csproj", "{BE466381-A3A4-4510-A44B-AA1027F041C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "order.commandservices", "..\order.commandservices\order.commandservices.csproj", "{BE466381-A3A4-4510-A44B-AA1027F041C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "order.queryservices", "..\order.queryservices\order.queryservices.csproj", "{3A920F97-D4FE-487B-A0CA-726CA2DE8047}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "order.queryservices", "..\order.queryservices\order.queryservices.csproj", "{3A920F97-D4FE-487B-A0CA-726CA2DE8047}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unittests", "..\unittests\unittests.csproj", "{2B45244A-147A-48F2-BEB6-19FE692E678A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "unittests", "..\unittests\unittests.csproj", "{2B45244A-147A-48F2-BEB6-19FE692E678A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -10,25 +10,25 @@ import { Address } from './address.component'
 export class AddressAddComponent {
 
   public newaddress: Address;
+  public flashMessage: string;
 
   constructor(private http: HttpClient) {
     this.newaddress = new Address();
+    this.flashMessage = "";
   }
 
   public gotoSaveAddress() {
 
-    console.log("this.newAddress" + this.newaddress);
+    this.flashMessage = "Saving new address.....";
 
     this.http.post('http://localhost:57386/api/order/saveaddress', this.newaddress).subscribe(
       result => {
       },
       error => {
-        //this.loading = false;
-        //this.flashMessage.show('We were not able to handle your request. Please try later.', { cssClass: 'alert-danger', timeout: 5000 });
+        this.flashMessage = "We were not able to handle your request. Please try later.";
       },
       () => {
-        //this.loading = false;
-        //this.flashMessage.show('Data updated successfully...', { cssClass: 'alert-success', timeout: 5000 });
+        this.flashMessage = "Data updated successfully...";
       }
     );
 

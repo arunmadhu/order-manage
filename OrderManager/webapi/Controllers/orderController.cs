@@ -31,9 +31,6 @@ namespace webapi.Controllers
         public IActionResult GetOrders()
         {
             var model = mapper.Map<IList<OrderInfo>>(orderService.GetAllOrders());
-
-            //commandSerive.UpdateOrder(new order.commandservices.Order());
-
             return Ok(model);
         }
 
