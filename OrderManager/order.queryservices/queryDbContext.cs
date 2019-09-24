@@ -31,7 +31,7 @@ namespace order.queryservices
         {
             modelBuilder.Entity<Address>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.AddressLine1)
                     .IsRequired()
@@ -48,7 +48,7 @@ namespace order.queryservices
 
             modelBuilder.Entity<Order>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.CustomerName)
                     .IsRequired()
@@ -61,19 +61,13 @@ namespace order.queryservices
 
             modelBuilder.Entity<OrderAddress>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.HasOne(d => d.Address)
                     .WithMany(p => p.OrderAddress)
                     .HasForeignKey(d => d.AddressId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_OrderAddress_ToTable_1");
-
-                entity.HasOne(d => d.Order)
-                    .WithMany(p => p.OrderAddress)
-                    .HasForeignKey(d => d.OrderId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_OrderAddress_ToTable");
             });
         }
     }

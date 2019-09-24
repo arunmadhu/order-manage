@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using order.commandservices.Services;
+using order.queryservices.Services;
+using webapi.Model;
 
 namespace webapi.Controllers
 {
@@ -13,44 +16,79 @@ namespace webapi.Controllers
     public class orderController : ControllerBase
     {
         private readonly IOrderCommands commandSerive;
+        private readonly IOrderQuery orderService;
+        private readonly IMapper mapper;
 
-        public orderController(IOrderCommands _commands)
+        public orderController(IOrderCommands _commands, IOrderQuery _orders, IMapper _mapper)
         {
             commandSerive = _commands;
+            orderService = _orders;
+            mapper = _mapper;
         }
 
-        // GET: api/order
         [HttpGet]
-        public IEnumerable<string> Get()
+        [Route("getallorders")]
+        public IActionResult GetOrders()
         {
-           var result = commandSerive.GetAllOrders();
+            var model = mapper.Map<IList<OrderInfo>>(orderService.GetAllOrders());
 
-            return new string[] { "value1", "value2" };
+            //commandSerive.UpdateOrder(new order.commandservices.Order());
+
+            return Ok(model);
         }
 
-        // GET: api/order/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet]
+        [Route("getorder/{orderid}")]
+        public IActionResult Get(int orderid)
         {
-            return "value";
+            var model = mapper.Map<OrderInfo>(orderService.GetOrderById(orderid));
+            return Ok(model);
         }
 
-        // POST: api/order
+        [HttpGet]
+        [Route("getalladdress")]
+        public IActionResult GetAddress()
+        {
+            var model = mapper.Map<IList<AddressInfo>>(orderService.GetAllAddresses());
+            return Ok(model);
+        }
+
+        [HttpGet]
+        [Route("getaddressbyorder/{orderid}")]
+        public IActionResult GetAddressByOrder(int orderid)
+        {
+            var address = mapper.Map<IList<AddressInfo>>(orderService.GetAllAddresses());
+            var orderAddress = orderService.GetOrderById(orderid).OrderAddress;
+
+            foreach (var ad in address)
+            {
+                ad.InOrder = orderAddress.Count(od => od.AddressId == ad.AddressId) > 0;
+            }
+            return Ok(address);
+        }
+
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("saveorderaddress")]
+        public IActionResult SaveOrderAddress([FromBody]OrderAddress orderAddress)
         {
+            commandSerive.UpdateOrder(orderAddress.OrderId, orderAddress.AddressIds);
+            return Ok();
         }
 
-        // PUT: api/order/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPost]
+        [Route("saveorder")]
+        public IActionResult SaveOrder([FromBody]OrderInfo newOrder)
         {
+            commandSerive.SaveOrder(mapper.Map<order.commandservices.Order>(newOrder));
+            return Ok();
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPost]
+        [Route("saveaddress")]
+        public IActionResult SaveAddress([FromBody]AddressInfo newAddress)
         {
+            commandSerive.SaveAddress(mapper.Map<order.commandservices.Address>(newAddress));
+            return Ok();
         }
     }
 }

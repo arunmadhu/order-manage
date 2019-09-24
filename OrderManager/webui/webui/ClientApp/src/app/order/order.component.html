@@ -1,0 +1,28 @@
+<h1>Available Orders</h1>
+
+<p *ngIf="!availableOrders"><em>Loading...</em></p>
+
+<div>
+  <button class="btn btn-md btn-primary" (click)="gotoAddOrder()">Add Order</button>
+</div>
+
+<table class="table table-striped" *ngIf="availableOrders">
+  <thead>
+    <tr>
+      <th>Order Number</th>
+      <th>Customer Name</th>
+      <th>Total Price($)</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of availableOrders ">
+      <td>{{ order.orderNumber }}</td>
+      <td>{{ order.customerName }}</td>
+      <td>{{ order.totalPrice }}</td>
+      <td>
+        <button class="btn btn-md btn-primary" (click)="gotoOrderDetails(order.orderId)">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

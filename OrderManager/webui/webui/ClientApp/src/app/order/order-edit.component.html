@@ -1,0 +1,66 @@
+<h2>Order Edit</h2>
+
+<p *ngIf="!selOrder"><em>Loading...</em></p>
+
+<div class="container" *ngIf="selOrder">
+  <div class="row">
+    <div class="col-md-2">
+      <span>Order Number</span>
+    </div>
+    <div class="col-md-2">
+      <span>{{ selOrder.orderNumber }}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <span>Customer Name</span>
+    </div>
+    <div class="col-md-2">
+      <span>{{ selOrder.customerName }}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <span>Total Price($)</span>
+    </div>
+    <div class="col-md-2">
+      <span>{{ selOrder.totalPrice }}</span>
+    </div>
+  </div>
+  <br /><br />
+  <div class="row">
+    <div class="col-md-8">
+      <span class="alert alert-success">Address mapping (You can change address mapping using the checkbox)</span>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-md btn-primary" (click)="saveChange()">Save changes</button>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-8">
+      <table class='table' *ngIf="allAddress">
+        <thead>
+          <tr>
+            <th>Address Line1</th>
+            <th>Address Line2</th>
+            <th>State</th>
+            <th>Pincode</th>
+            <th>Mapped to order</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let address of allAddress ">
+            <td>{{ address.addressLine1 }}</td>
+            <td>{{ address.addressLine2 }}</td>
+            <td>{{ address.state }}</td>
+            <td>{{ address.pincode }}</td>
+            <td>
+              <input type="checkbox" [(ngModel)]="address.inOrder" [checked]="address.inOrder" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

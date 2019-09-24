@@ -7,6 +7,7 @@ namespace webapi.Model
 {
     public class OrderInfo
     {
+        public int OrderId { get; set; }
         public string OrderNumber { get; set; }
         public string CustomerName { get; set; }
         public int TotalPrice { get; set; }

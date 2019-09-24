@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[OrderAddress] (
-    [Id]        INT NOT NULL,
+    [Id]        INT NOT NULL IDENTITY(10, 1),
     [OrderId]   INT NOT NULL,
     [AddressId] INT NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC),

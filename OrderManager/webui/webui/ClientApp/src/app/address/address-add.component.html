@@ -1,0 +1,44 @@
+<h2>Add new Address</h2>
+<br />
+<div class="wrapper" style="padding-top: 10px; padding-bottom: 10px; ">
+  <div class="row noMargin">
+    <div class="col-md-3" style="text-align:right;">
+      <label class="control-label"><b>Address Line1</b></label>
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" [(ngModel)]="newaddress.addressLine1" />
+    </div>
+  </div>
+  <br />
+  <div class="row noMargin">
+    <div class="col-md-3" style="text-align:right;">
+      <label class="control-label"><b>Address Line2</b></label>
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" [(ngModel)]="newaddress.addressLine2" />
+    </div>
+  </div>
+  <br />
+  <div class="row noMargin">
+    <div class="col-md-3" style="text-align:right;">
+      <label class="control-label"><b>State</b></label>
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" [(ngModel)]="newaddress.state" />
+    </div>
+  </div>
+  <br />
+  <div class="row noMargin">
+    <div class="col-md-3" style="text-align:right;">
+      <label class="control-label"><b>Pincode</b></label>
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" [(ngModel)]="newaddress.pincode" />
+    </div>
+  </div>
+  <br />
+</div>
+
+<div>
+  <button class="btn btn-md btn-primary" (click)="gotoSaveAddress()">Save Address</button>
+</div>

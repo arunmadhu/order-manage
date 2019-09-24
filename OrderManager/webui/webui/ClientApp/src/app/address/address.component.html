@@ -1,0 +1,26 @@
+<h2>Address present in system</h2>
+
+<p *ngIf="!availableAddress"><em>Loading...</em></p>
+
+<div>
+  <button class="btn btn-md btn-primary" (click)="gotoAddAddress()">Add Address</button>
+</div>
+
+<table class="table table-striped" *ngIf="availableAddress">
+  <thead>
+    <tr>
+      <th>Address Line1</th>
+      <th>Address Line2</th>
+      <th>State</th>
+      <th>PinCode</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let adr of availableAddress ">
+      <td>{{ adr.addressLine1 }}</td>
+      <td>{{ adr.addressLine2 }}</td>
+      <td>{{ adr.state }}</td>
+      <td>{{ adr.pincode }}</td>
+    </tr>
+  </tbody>
+</table>

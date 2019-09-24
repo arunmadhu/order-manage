@@ -1,0 +1,35 @@
+<h2>Add new Order</h2>
+<br />
+<div class="wrapper" style="padding-top: 10px; padding-bottom: 10px; ">
+  <div class="row noMargin">
+    <div class="col-md-3" style="text-align:right;">
+      <label class="control-label"><b>Order Number</b></label>
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" [(ngModel)]="newOrder.orderNumber" />
+    </div>
+  </div>
+  <br />
+  <div class="row noMargin">
+    <div class="col-md-3" style="text-align:right;">
+      <label class="control-label"><b>Customer Name</b></label>
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" [(ngModel)]="newOrder.customerName" />
+    </div>
+  </div>
+  <br />
+  <div class="row noMargin">
+    <div class="col-md-3" style="text-align:right;">
+      <label class="control-label"><b>Total Price</b></label>
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" [(ngModel)]="newOrder.totalPrice" />
+    </div>
+  </div>
+  <br />
+</div>
+
+<div>
+  <button class="btn btn-md btn-primary" (click)="gotoSaveOrder()">Save Order</button>
+</div>

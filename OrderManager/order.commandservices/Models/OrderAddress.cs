@@ -10,6 +10,5 @@ namespace order.commandservices
         public int AddressId { get; set; }
 
         public Address Address { get; set; }
-        public Order Order { get; set; }
     }
 }
